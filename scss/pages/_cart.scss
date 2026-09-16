@@ -1,0 +1,333 @@
+@use "../abstracts/_variables.scss" as *;
+@use "../abstracts/_functions" as *;
+@use "../abstracts/mixins.scss" as *;
+
+.cart-page {
+  font-family: $font-secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: convert(135);
+  padding: 1rem;
+  gap: 1rem;
+
+  @media (min-width: $break-desktop) {
+    padding: 0 convert(100);
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &__title {
+    @include sectional-heading;
+    margin-bottom: 1.25rem;
+    @media (min-width: $break-desktop) {
+      font-size: convert(40);
+    }
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    @media (min-width: $break-desktop) {
+      flex-direction: row;
+    }
+  }
+}
+
+.cart-list {
+  flex: 1;
+  border: 1px solid $color-gray-border;
+  border-radius: 1.25rem;
+  padding: convert(14);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @media (min-width: $break-desktop) {
+    padding: 1.25rem 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+.cart-item {
+  display: flex;
+  gap: convert(14);
+  justify-content: space-between;
+  border-bottom: 1px solid $color-gray-border;
+  width: 100%;
+
+  @media(min-width: $break-desktop){
+    padding-bottom:1.5rem;
+  }
+
+
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  &__image-wrap {
+    width: convert(99);
+    height: convert(99);
+    @include product-image-wrap;
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+
+    @media (min-width: $break-desktop) {
+      width: convert(124);
+      height: convert(124);
+    }
+  }
+
+  &__details {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__title {
+    @include secondary-bold;
+
+    @media (min-width: $break-desktop) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__attribute {
+    @include small-text;
+
+    &-val {
+      color: $color-gray-text;
+    }
+  }
+
+  &__delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+    color: $primary-black;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    @media (min-width: $break-desktop) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  background: $border-gray-light;
+  @include button-style;
+  justify-content: space-between;
+  padding: convert(14) 1.25rem;
+  gap: 1.25rem;
+
+  &__btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__input {
+    text-align: center;
+    @include small-text;
+    font-weight: $font-weight-medium;
+    background: transparent;
+    border: none;
+    outline: none;
+    pointer-events: none;
+  }
+}
+
+.cart-summary {
+  flex-shrink: 0;
+  border: 1px solid $color-gray-border;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  gap: 1rem;
+
+  &__title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: $primary-black;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: $font-weight-regular;
+    margin-bottom: 1.25rem;
+
+    &--total {
+      font-weight: $font-weight-bold;
+      .cart-summary__label {
+        color: $primary-black;
+      }
+      .cart-summary__value {
+        color: $primary-black;
+      }
+    }
+  }
+
+  &__label {
+    color: $color-gray-text;
+  }
+
+  &__value {
+    font-weight: 700;
+    color: $color-black;
+
+    &--discount {
+      color: $color-red;
+    }
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid $color-gray-border;
+    margin: 1.25rem 0;
+  }
+
+  &__checkout {
+    @include button-style;
+    background-color: $primary-black;
+    color: $color-white;
+    @include small-text;
+    font-weight: $font-weight-bold;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.promo-code {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+
+  &__wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: $product-bg;
+    @include button-style;
+    padding: 0.75rem 1rem;
+    gap: convert(10);
+  }
+
+  &__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    @include small-text;
+    outline: none;
+
+    &::placeholder {
+      color: $color-gray-text;
+    }
+  }
+
+  &__apply {
+    @include button-style;
+    padding: 0.75rem 1rem;
+    background-color: $primary-black;
+    color: $color-white;
+    white-space: nowrap;
+  }
+
+  &__message {
+    font-size: convert(14);
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
+  }
+}
+
+.modal-overlay {
+  font-family: $font-secondary;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.modal {
+  background-color: $primary-black;
+  color: $primary-white;
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: convert(360);
+  text-align: center;
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.15);
+
+  &__icon {
+    font: $font-secondary;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: #70b98e;
+    color: #fff;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font-size: $font-size-medium;
+    font-weight: $font-weight-medium;
+    color: $primary-white;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+}
