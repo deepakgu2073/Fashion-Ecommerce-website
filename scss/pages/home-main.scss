@@ -17,26 +17,13 @@
 
       .hero__banner {
         display: flex;
-        position: relative;
+        background-color: #F2F0F1;
 
         flex-direction: column;
         
         width: 100%;
 
-        .hero__models-canvas-desktop {
-          display: none;
-          @media (min-width: $break-desktop) {
-            width: 100%;
-            height:auto;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-             right: 0;
-            object-fit: cover;
-            z-index: -1;
-          }
-        }
+        
         .hero__main-content {
           padding: 0 convert(16);
           display: flex;
@@ -51,6 +38,7 @@
           .hero__main-text {
             @include regular-text;
             color: rgba(0, 0, 0, 0.6);
+            flex-wrap: wrap;
           }
           .btn-shopnow {
             @include button-style;
@@ -113,7 +101,7 @@
           }
 
           @media (min-width: $break-desktop) {
-            justify-content: space-between;
+            width: 45%;
             padding: 0;
             padding-top: convert(100);
             gap: convert(32);
@@ -145,6 +133,7 @@
                 flex: none;
                 padding: 0;
                 margin: 0;
+                margin-top: 1rem;
 
                 .stat-item__number {
                   font-size: convert(40);
@@ -164,7 +153,7 @@
             }
           }
         }
-
+        
         .hero__image-area {
           min-width: 0;
           position: relative;
@@ -188,21 +177,12 @@
             display: block;
             width: 100%;
             height: auto;
+            object-fit: cover;
+            margin:0 1rem;
           }
 
           @media (min-width: $break-desktop) {
-            position: static;
-            .big-star {
-              top: 12.971%;
-              left: 87.152%;
-            }
-            .small-star {
-              top: 44.796%;
-              left: 52.083%;
-            }
-            .hero__bg-models-mobile {
-              display: none;
-            }
+            width: 55%;
           }
         }
         @media (min-width: $break-desktop) {
